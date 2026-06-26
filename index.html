@@ -35,6 +35,13 @@
   .sec-lead{color:var(--sub);font-size:16px;margin-top:16px;max-width:62ch;line-height:1.9}
   section{padding:clamp(56px,8vh,96px) 0;position:relative;border-top:1px solid var(--line)}
 
+  /* icons */
+  .ic{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
+  .ic.fill{fill:currentColor;stroke:none}
+  .icbox{width:46px;height:46px;border-radius:12px;background:var(--ink);color:var(--lime);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .icpill{width:38px;height:38px;border-radius:10px;background:#eef9cf;color:var(--lime-deep);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .icpill.coral{background:#ffe7e1;color:var(--coral)}
+
   /* nav */
   nav{position:sticky;top:0;z-index:40;background:rgba(250,249,245,.82);backdrop-filter:blur(12px);border-bottom:2px solid var(--ink)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
@@ -72,16 +79,17 @@
 
   /* marquee */
   .marq{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--ink);overflow:hidden;white-space:nowrap;position:relative;z-index:2}
-  .marq .track{display:inline-flex;will-change:transform;animation:scroll 26s linear infinite}
+  .marq .track{display:inline-flex;align-items:center;will-change:transform;animation:scroll 26s linear infinite}
   .marq span{font-family:var(--disp);font-weight:800;font-size:clamp(15px,1.8vw,19px);color:#fff;padding:13px 0}
-  .marq span::after{content:"✦";color:var(--lime);margin:0 26px;font-size:.8em;vertical-align:middle}
+  .marq .sep{width:7px;height:7px;border-radius:50%;background:var(--lime);margin:0 26px;display:inline-block}
   @keyframes scroll{to{transform:translateX(-50%)}}
   .marq:hover .track{animation-play-state:paused}
 
   /* 課題 */
   .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
   .prob{background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:26px 24px}
-  .prob .q{font-family:var(--disp);font-weight:800;color:var(--coral);font-size:14px;margin-bottom:10px}
+  .prob .hd{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+  .prob .q{font-family:var(--disp);font-weight:800;color:var(--coral);font-size:15px}
   .prob p{font-size:15px;line-height:1.7;font-weight:500}
   .prob-note{margin-top:26px;font-size:14px;color:var(--sub);background:var(--panel);border:1.5px solid var(--line);border-left:5px solid var(--blue);border-radius:8px;padding:18px 22px;line-height:1.8}
   .prob-note b{color:var(--ink)}
@@ -93,33 +101,36 @@
   .card:nth-child(1){box-shadow:8px 8px 0 var(--blue)}
   .card:nth-child(2){box-shadow:8px 8px 0 var(--lime-deep)}
   .card:hover{transform:translate(-3px,-3px)}
+  .card .ch{display:flex;align-items:center;gap:14px;margin-bottom:8px}
   .card .n{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--sub)}
-  .card h3{font-family:var(--jp);font-weight:900;font-size:clamp(21px,2.6vw,27px);margin:14px 0 12px;line-height:1.34}
+  .card h3{font-family:var(--jp);font-weight:900;font-size:clamp(21px,2.6vw,27px);margin:2px 0 12px;line-height:1.34}
   .card p{color:var(--sub);font-size:15px;font-weight:500;line-height:1.85}
   .card ul{list-style:none;margin-top:18px;display:grid;gap:9px}
   .card li{font-size:14.5px;padding-left:22px;position:relative;line-height:1.6}
-  .card li::before{content:"→";position:absolute;left:0;color:var(--lime-deep);font-weight:700}
+  .card li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--lime-deep)}
   .tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
   .tags span{font-family:var(--mono);font-size:11px;background:var(--ink);color:#fff;padding:6px 11px;border-radius:7px}
   @media(max-width:760px){.cards{grid-template-columns:1fr}}
 
-  /* flow */
-  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px;counter-reset:step}
-  .step{background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:24px 20px;position:relative}
+  /* flow diagram */
+  .flowd{display:flex;align-items:stretch;margin-top:44px}
+  .step{flex:1;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:24px 18px}
+  .fconn{flex:0 0 30px;display:flex;align-items:center;justify-content:center;color:var(--ink)}
+  .step .stop{display:flex;align-items:center;gap:11px;margin-bottom:10px}
   .step .num{font-family:var(--disp);font-weight:800;font-size:13px;color:var(--blue);letter-spacing:.06em}
-  .step h4{font-family:var(--jp);font-weight:900;font-size:17px;margin:10px 0 10px}
+  .step h4{font-family:var(--jp);font-weight:900;font-size:17px;margin:0 0 8px}
   .step .when{font-family:var(--mono);font-size:11px;color:var(--sub);margin-bottom:10px;display:block}
   .step p{font-size:13px;color:var(--sub);line-height:1.65}
   .step .deliv{margin-top:12px;font-size:12px;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px}
   .step .deliv b{color:var(--lime-deep);font-family:var(--mono);font-size:10px;letter-spacing:.08em;display:block;margin-bottom:3px}
-  @media(max-width:980px){.flow{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.flow{grid-template-columns:1fr}}
+  @media(max-width:980px){.flowd{flex-wrap:wrap;gap:14px}.step{flex:1 1 100%}.fconn{display:none}}
 
   /* usecases */
   .uc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px}
   .uc{background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:26px 26px;border-top:5px solid var(--lime)}
+  .uc .uh{display:flex;align-items:center;gap:13px;margin-bottom:14px}
   .uc .tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--sub)}
-  .uc h4{font-family:var(--jp);font-weight:900;font-size:18px;margin:8px 0 14px;line-height:1.4}
+  .uc h4{font-family:var(--jp);font-weight:900;font-size:18px;margin:2px 0 0;line-height:1.4}
   .uc .row{font-size:14px;line-height:1.7;margin:6px 0;padding-left:74px;position:relative}
   .uc .row .k{position:absolute;left:0;font-family:var(--mono);font-size:11px;color:var(--blue);top:4px}
   .uc .row.res{color:var(--ink);font-weight:700}
@@ -129,12 +140,12 @@
   /* reasons */
   .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
   .reason{padding:28px 24px;border:1.5px solid var(--line);border-radius:16px;background:var(--panel)}
-  .reason .ic{width:42px;height:42px;border-radius:10px;background:var(--ink);color:var(--lime);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;margin-bottom:16px}
+  .reason .icbox{margin-bottom:16px}
   .reason h4{font-family:var(--jp);font-weight:900;font-size:18px;margin-bottom:10px;line-height:1.4}
   .reason p{font-size:14px;color:var(--sub);line-height:1.75}
   @media(max-width:760px){.reasons{grid-template-columns:1fr}}
 
-  /* proof / profile split */
+  /* profile */
   .profile{display:grid;grid-template-columns:300px 1fr;gap:36px;margin-top:44px;align-items:start}
   .pcard{background:var(--ink);color:#fff;border-radius:20px;padding:32px 28px;box-shadow:8px 8px 0 var(--coral)}
   .pcard .mk{width:54px;height:54px;margin-bottom:18px}
@@ -144,9 +155,8 @@
   .pcard .links{margin-top:18px;display:flex;flex-direction:column;gap:8px}
   .pcard .links a{font-family:var(--mono);font-size:13px;color:var(--lime);text-decoration:none;border-bottom:1px solid rgba(200,242,74,.3);width:fit-content}
   .proof-body h3{font-family:var(--jp);font-weight:900;font-size:22px;margin-bottom:20px;line-height:1.4}
-  .proof-body .item{margin-bottom:22px}
-  .proof-body .item h4{font-family:var(--jp);font-weight:700;font-size:17px;margin-bottom:7px;display:flex;align-items:center;gap:10px}
-  .proof-body .item h4::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime)}
+  .proof-body .item{margin-bottom:22px;display:flex;gap:15px}
+  .proof-body .item h4{font-family:var(--jp);font-weight:700;font-size:17px;margin-bottom:7px}
   .proof-body .item p{font-size:15px;color:var(--sub);line-height:1.85}
   .proof-body .item a{color:var(--blue);text-decoration:none;font-weight:700}
   @media(max-width:760px){.profile{grid-template-columns:1fr}}
@@ -159,18 +169,26 @@
   .pp p{font-size:14px;color:var(--sub);line-height:1.8}
   .pp .amt{margin-top:14px;font-family:var(--disp);font-weight:800;font-size:15px;color:var(--ink)}
   .pricing-note{margin-top:22px;font-size:13.5px;color:var(--sub);line-height:1.8}
-  .subsidy{margin-top:28px;background:var(--ink);color:#fff;border-radius:18px;padding:32px 32px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
-  .subsidy .big{font-family:var(--jp);font-weight:900;font-size:clamp(20px,2.6vw,28px);line-height:1.4;flex:1;min-width:260px}
+  .subsidy{margin-top:28px;background:var(--ink);color:#fff;border-radius:18px;padding:30px 32px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+  .subsidy .icbox{background:rgba(200,242,74,.16);width:56px;height:56px}
+  .subsidy .big{font-family:var(--jp);font-weight:900;font-size:clamp(20px,2.6vw,28px);line-height:1.4;flex:1;min-width:240px}
   .subsidy .big .hl{background:var(--lime);color:var(--ink);padding:0 .1em;border-radius:3px}
   .subsidy p{font-size:14px;color:#c9cacd;line-height:1.8;flex:1;min-width:260px}
   @media(max-width:760px){.price-grid{grid-template-columns:1fr}}
+
+  /* assurance */
+  .assure{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
+  .acard{display:flex;gap:16px;align-items:flex-start;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:24px 26px}
+  .acard h4{font-family:var(--jp);font-weight:900;font-size:17px;margin-bottom:7px}
+  .acard p{font-size:14px;color:var(--sub);line-height:1.7}
+  @media(max-width:680px){.assure{grid-template-columns:1fr}}
 
   /* faq */
   .faq{margin-top:44px;display:grid;gap:14px}
   .qa{background:var(--panel);border:1.5px solid var(--line);border-radius:14px;padding:24px 26px}
   .qa .q{font-family:var(--jp);font-weight:900;font-size:17px;line-height:1.5;display:flex;gap:12px}
-  .qa .q::before{content:"Q";font-family:var(--disp);color:var(--blue);flex:0 0 auto}
-  .qa .a{font-size:14.5px;color:var(--sub);line-height:1.85;margin-top:12px;padding-left:26px}
+  .qa .q::before{content:"Q.";font-family:var(--disp);color:var(--blue);flex:0 0 auto}
+  .qa .a{font-size:14.5px;color:var(--sub);line-height:1.85;margin-top:12px;padding-left:30px}
   .qa .a b{color:var(--ink)}
 
   /* cta */
@@ -198,6 +216,28 @@
 </head>
 <body>
 <div class="grain"></div>
+
+<!-- ICON LIBRARY -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h4M9.5 12h7M9.5 16h7"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.3a2.8 2.8 0 0 1 5.4 1c0 1.8-2.6 2.2-2.6 4M12 17.2h.01"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.5 2.6 15.5 0 18M12 3c-2.6 2.5-2.6 15.5 0 18"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 20v-6M12 20v-10M17 20v-8"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 8-4-1-7-4-7-8V6z"/></symbol>
+  <symbol id="i-shieldcheck" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M4 16l5-5 4 3 7-7"/><path d="M16 7h4v4"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.4 2.5-5.5 5.5-5.5s5.5 2.1 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M17.5 14.6c2 .7 3.5 2.6 3.5 5.4"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 32 32"><path d="M16 2L19 13L30 16L19 19L16 30L13 19L2 16L13 13Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M3 11l4-4 5 2 5-2 4 4"/><path d="M7 7l4 4a2 2 0 0 0 3 0M12 13l2 2M9 15l2 2"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M8 4h8v3H8z"/><path d="M6 5H5v15h14V5h-1"/><path d="M9 11h6M9 15h4"/></symbol>
+</defs></svg>
 
 <nav><div class="wrap">
   <a class="logo" href="#top"><span class="b">AI</span>信州AIワークス</a>
@@ -227,8 +267,8 @@
 </header>
 
 <div class="marq" aria-hidden="true"><div class="track">
-  <span>AI業務自動化</span><span>電話一次対応AI</span><span>SNS・コンテンツ活用</span><span>多言語インバウンドPR</span><span>本番品質の実装</span><span>補助金で導入コスト圧縮</span><span>現場の内製化</span>
-  <span>AI業務自動化</span><span>電話一次対応AI</span><span>SNS・コンテンツ活用</span><span>多言語インバウンドPR</span><span>本番品質の実装</span><span>補助金で導入コスト圧縮</span><span>現場の内製化</span>
+  <span>AI業務自動化</span><i class="sep"></i><span>電話一次対応AI</span><i class="sep"></i><span>SNS・コンテンツ活用</span><i class="sep"></i><span>多言語インバウンドPR</span><i class="sep"></i><span>本番品質の実装</span><i class="sep"></i><span>補助金で導入コスト圧縮</span><i class="sep"></i><span>現場の内製化</span><i class="sep"></i>
+  <span>AI業務自動化</span><i class="sep"></i><span>電話一次対応AI</span><i class="sep"></i><span>SNS・コンテンツ活用</span><i class="sep"></i><span>多言語インバウンドPR</span><i class="sep"></i><span>本番品質の実装</span><i class="sep"></i><span>補助金で導入コスト圧縮</span><i class="sep"></i><span>現場の内製化</span><i class="sep"></i>
 </div></div>
 
 <!-- 課題 -->
@@ -236,12 +276,12 @@
   <div class="rv"><span class="eyebrow">こんなお悩みありませんか</span>
   <h2 class="sec-title">人手は足りない。AIは気になる。<br>でも、何から手をつければいいか分からない。</h2></div>
   <div class="prob-grid">
-    <div class="prob rv"><div class="q">人手不足</div><p>電話・予約・問い合わせ対応に追われ、本来やるべき仕事に手が回らない。繁忙期はとくに取りこぼしが出る。</p></div>
-    <div class="prob rv" style="transition-delay:.05s"><div class="q">手作業の山</div><p>予約台帳・請求・記録が紙やExcel・FAX頼み。同じ入力や転記を何度も繰り返している。</p></div>
-    <div class="prob rv" style="transition-delay:.1s"><div class="q">相談先がない</div><p>社内にIT・AIに詳しい人がいない。ベンダーは大げさで高そう、何を頼めるかも分からない。</p></div>
-    <div class="prob rv" style="transition-delay:.15s"><div class="q">多言語対応</div><p>インバウンドの問い合わせに英語・多言語で応じきれず、機会を逃している。</p></div>
-    <div class="prob rv" style="transition-delay:.2s"><div class="q">効果が読めない</div><p>AIを入れて本当に元が取れるのか、どれくらい楽になるのかが見えない。投資判断ができない。</p></div>
-    <div class="prob rv" style="transition-delay:.25s"><div class="q">情報漏れが不安</div><p>顧客情報を扱うのにAIは安全なのか。セキュリティや運用が心配で踏み出せない。</p></div>
+    <div class="prob rv"><div class="hd"><span class="icpill coral"><svg class="ic"><use href="#i-users"/></svg></span><div class="q">人手不足</div></div><p>電話・予約・問い合わせ対応に追われ、本来やるべき仕事に手が回らない。繁忙期はとくに取りこぼしが出る。</p></div>
+    <div class="prob rv" style="transition-delay:.05s"><div class="hd"><span class="icpill coral"><svg class="ic"><use href="#i-doc"/></svg></span><div class="q">手作業の山</div></div><p>予約台帳・請求・記録が紙やExcel・FAX頼み。同じ入力や転記を何度も繰り返している。</p></div>
+    <div class="prob rv" style="transition-delay:.1s"><div class="hd"><span class="icpill coral"><svg class="ic"><use href="#i-help"/></svg></span><div class="q">相談先がない</div></div><p>社内にIT・AIに詳しい人がいない。ベンダーは大げさで高そう、何を頼めるかも分からない。</p></div>
+    <div class="prob rv" style="transition-delay:.15s"><div class="hd"><span class="icpill coral"><svg class="ic"><use href="#i-globe"/></svg></span><div class="q">多言語対応</div></div><p>インバウンドの問い合わせに英語・多言語で応じきれず、機会を逃している。</p></div>
+    <div class="prob rv" style="transition-delay:.2s"><div class="hd"><span class="icpill coral"><svg class="ic"><use href="#i-chart"/></svg></span><div class="q">効果が読めない</div></div><p>AIを入れて本当に元が取れるのか、どれくらい楽になるのかが見えない。投資判断ができない。</p></div>
+    <div class="prob rv" style="transition-delay:.25s"><div class="hd"><span class="icpill coral"><svg class="ic"><use href="#i-shield"/></svg></span><div class="q">情報漏れが不安</div></div><p>顧客情報を扱うのにAIは安全なのか。セキュリティや運用が心配で踏み出せない。</p></div>
   </div>
   <p class="prob-note rv">長野県の調査でも、AI導入の課題は<b>「情報不足 44.6%」「社内ICT人材の不在 44.3%」「投資対効果の算定が難しい 42.5%」</b>が上位。つまり、多くの会社が同じところでつまずいています。信州AIワークスは、まさにこの3つを解くためにあります。</p>
 </div></section>
@@ -253,7 +293,7 @@
   <p class="sec-lead">「業務をAIで楽にする」も、「現場がAIを使いこなせるようになる」も。御社に必要なところを、必要なだけ。丸投げでも、二人三脚でも構いません。</p></div>
   <div class="cards">
     <div class="card rv">
-      <div class="n">01 / AUTOMATION</div>
+      <div class="ch"><span class="icbox"><svg class="ic"><use href="#i-gear"/></svg></span><div class="n">01 / AUTOMATION</div></div>
       <h3>AIで、業務の手間を減らす</h3>
       <p>業務の困りごとを聞いて、AIで減らせる手間・自動化できる仕事を、相談・診断からセキュアな本番品質の実装まで一気通貫で。</p>
       <ul>
@@ -266,7 +306,7 @@
       <div class="tags"><span>要件定義</span><span>設計・実装</span><span>運用・保守</span></div>
     </div>
     <div class="card rv" style="transition-delay:.1s">
-      <div class="n">02 / ENABLEMENT</div>
+      <div class="ch"><span class="icbox"><svg class="ic"><use href="#i-chat"/></svg></span><div class="n">02 / ENABLEMENT</div></div>
       <h3>AIを、現場で使えるようにする</h3>
       <p>SNS・動画・コンテンツ制作で「AIをどう使うか」を、現場目線でレクチャー・伴走。担当者が自分で回せるようになるまで。</p>
       <ul>
@@ -286,12 +326,16 @@
   <div class="rv"><span class="eyebrow">How it works</span>
   <h2 class="sec-title">導入の流れ。何が起きるか、最初に見えます。</h2>
   <p class="sec-lead">いきなり大きな投資はしません。小さく診断して、効果が見込めるところから、段階的に。各ステップで「やること・期間・お渡しするもの」を明確にします。</p></div>
-  <div class="flow">
-    <div class="step rv"><div class="num">STEP 01</div><span class="when">無料・30〜60分</span><h4>相談</h4><p>業務の困りごと・やりたいことをお聞きします。AIで解けそうか、まずは雑談ベースで。オンライン可。</p><div class="deliv"><b>お渡し</b>方向性のメモ</div></div>
-    <div class="step rv" style="transition-delay:.05s"><div class="num">STEP 02</div><span class="when">60〜90分＋レポート</span><h4>現状診断</h4><p>業務を棚卸しし、AIで減らせる手間・自動化できる仕事を洗い出し。優先順位・効果の目安・使える補助金を整理。</p><div class="deliv"><b>お渡し</b>活用ロードマップ1枚</div></div>
-    <div class="step rv" style="transition-delay:.1s"><div class="num">STEP 03</div><span class="when">数日〜</span><h4>提案</h4><p>一番痛い×測れる課題を選び、何を・どう作るか、費用・補助金・期間を提案。納得いただいてから着手します。</p><div class="deliv"><b>お渡し</b>提案書・見積</div></div>
-    <div class="step rv" style="transition-delay:.15s"><div class="num">STEP 04</div><span class="when">課題規模による</span><h4>実装</h4><p>セキュアに本番品質で構築。小さく作って試し、効果を確かめながら本番へ。情報の扱いも設計段階から配慮。</p><div class="deliv"><b>お渡し</b>動く仕組み・手順書</div></div>
-    <div class="step rv" style="transition-delay:.2s"><div class="num">STEP 05</div><span class="when">月次・任意</span><h4>伴走</h4><p>運用を見守り、次に自動化すべきところを一緒に決める。重くしすぎず、必要な分だけ。</p><div class="deliv"><b>お渡し</b>運用サポート</div></div>
+  <div class="flowd">
+    <div class="step rv"><div class="stop"><span class="icpill"><svg class="ic"><use href="#i-chat"/></svg></span><div class="num">STEP 01</div></div><span class="when">無料・30〜60分</span><h4>相談</h4><p>業務の困りごと・やりたいことをお聞きします。オンライン可。</p><div class="deliv"><b>お渡し</b>方向性のメモ</div></div>
+    <div class="fconn"><svg class="ic"><use href="#i-arrow"/></svg></div>
+    <div class="step rv" style="transition-delay:.05s"><div class="stop"><span class="icpill"><svg class="ic"><use href="#i-chart"/></svg></span><div class="num">STEP 02</div></div><span class="when">60〜90分＋資料</span><h4>現状診断</h4><p>業務を棚卸しし、減らせる手間・効果の目安・補助金を整理。</p><div class="deliv"><b>お渡し</b>活用ロードマップ</div></div>
+    <div class="fconn"><svg class="ic"><use href="#i-arrow"/></svg></div>
+    <div class="step rv" style="transition-delay:.1s"><div class="stop"><span class="icpill"><svg class="ic"><use href="#i-clipboard"/></svg></span><div class="num">STEP 03</div></div><span class="when">数日〜</span><h4>提案</h4><p>課題を選び、何を・どう作るか、費用・補助金・期間を提案。</p><div class="deliv"><b>お渡し</b>提案書・見積</div></div>
+    <div class="fconn"><svg class="ic"><use href="#i-arrow"/></svg></div>
+    <div class="step rv" style="transition-delay:.15s"><div class="stop"><span class="icpill"><svg class="ic"><use href="#i-gear"/></svg></span><div class="num">STEP 04</div></div><span class="when">課題規模による</span><h4>実装</h4><p>セキュアに本番品質で構築。小さく試して効果を確認しながら。</p><div class="deliv"><b>お渡し</b>動く仕組み・手順書</div></div>
+    <div class="fconn"><svg class="ic"><use href="#i-arrow"/></svg></div>
+    <div class="step rv" style="transition-delay:.2s"><div class="stop"><span class="icpill"><svg class="ic"><use href="#i-handshake"/></svg></span><div class="num">STEP 05</div></div><span class="when">月次・任意</span><h4>伴走</h4><p>運用を見守り、次に自動化すべきところを一緒に決める。</p><div class="deliv"><b>お渡し</b>運用サポート</div></div>
   </div>
 </div></section>
 
@@ -301,19 +345,19 @@
   <h2 class="sec-title">たとえば、こんな使い方。</h2>
   <p class="sec-lead">地方の中小企業でよくある課題から、AIでどう変わるかの想定例です（実際の設計は診断で御社に合わせます）。</p></div>
   <div class="uc-grid">
-    <div class="uc rv"><div class="tag">宿泊・サービス業</div><h4>電話予約の取りこぼしをなくす</h4>
+    <div class="uc rv"><div class="uh"><span class="icpill"><svg class="ic"><use href="#i-phone"/></svg></span><div><div class="tag">宿泊・サービス業</div><h4>電話予約の取りこぼしをなくす</h4></div></div>
       <div class="row"><span class="k">課題</span>繁忙期・営業時間外の電話に出きれず予約機会を逃す</div>
       <div class="row"><span class="k">AIで</span>一次対応AIが用件を聞き取り・記録、要対応のみ通知</div>
       <div class="row res"><span class="k">効果</span>取りこぼし減・スタッフの電話拘束を圧縮</div></div>
-    <div class="uc rv" style="transition-delay:.05s"><div class="tag">インバウンド</div><h4>多言語の問い合わせに即応する</h4>
+    <div class="uc rv" style="transition-delay:.05s"><div class="uh"><span class="icpill"><svg class="ic"><use href="#i-globe"/></svg></span><div><div class="tag">インバウンド</div><h4>多言語の問い合わせに即応する</h4></div></div>
       <div class="row"><span class="k">課題</span>英語・多言語の問い合わせに対応しきれない</div>
       <div class="row"><span class="k">AIで</span>多言語での自動応答・下書き生成で初動を支援</div>
       <div class="row res"><span class="k">効果</span>機会損失の低減・対応負荷の軽減</div></div>
-    <div class="uc rv" style="transition-delay:.1s"><div class="tag">事務・バックオフィス</div><h4>書類・記録の手作業を減らす</h4>
+    <div class="uc rv" style="transition-delay:.1s"><div class="uh"><span class="icpill"><svg class="ic"><use href="#i-doc"/></svg></span><div><div class="tag">事務・バックオフィス</div><h4>書類・記録の手作業を減らす</h4></div></div>
       <div class="row"><span class="k">課題</span>台帳・請求・記録の転記や集計に時間を取られる</div>
       <div class="row"><span class="k">AIで</span>入力・転記・要約・集計を自動化／半自動化</div>
       <div class="row res"><span class="k">効果</span>定型作業の時間削減・転記ミスの低減</div></div>
-    <div class="uc rv" style="transition-delay:.15s"><div class="tag">マーケ・発信</div><h4>SNS・コンテンツ発信を内製化する</h4>
+    <div class="uc rv" style="transition-delay:.15s"><div class="uh"><span class="icpill"><svg class="ic"><use href="#i-chat"/></svg></span><div><div class="tag">マーケ・発信</div><h4>SNS・コンテンツ発信を内製化する</h4></div></div>
       <div class="row"><span class="k">課題</span>発信したいが人手・ノウハウがなく続かない</div>
       <div class="row"><span class="k">AIで</span>AI活用の制作フローを整え、担当者が自走できる状態に</div>
       <div class="row res"><span class="k">効果</span>外注に頼らず継続発信・制作コストの圧縮</div></div>
@@ -326,9 +370,9 @@
   <h2 class="sec-title">「助言だけ」でも「安く速くbot」でもない。</h2>
   <p class="sec-lead">コンサルは作ってくれない。格安ツールは現場に根づかない。要件から運用まで通せる人が、長野で伴走します。</p></div>
   <div class="reasons">
-    <div class="reason rv"><div class="ic">→</div><h4>実装まで、やる</h4><p>助言だけのコンサルではありません。要件定義→設計→実装→運用に乗せるまで、一気通貫で責任を持ちます。</p></div>
-    <div class="reason rv" style="transition-delay:.07s"><div class="ic">🔒</div><h4>セキュア・本番品質</h4><p>規制の厳しい分野で本番AIのクラウド基盤・セキュリティ設計に従事。「動けばいい」ではなく、安心して使える品質で。</p></div>
-    <div class="reason rv" style="transition-delay:.14s"><div class="ic">¥</div><h4>数字で、正直に</h4><p>"なんとなくAI" ではなく、コスト・時間・取りこぼしの数字で話します。効果が見込めないことは「やらない」と言います。</p></div>
+    <div class="reason rv"><span class="icbox"><svg class="ic"><use href="#i-target"/></svg></span><h4>実装まで、やる</h4><p>助言だけのコンサルではありません。要件定義→設計→実装→運用に乗せるまで、一気通貫で責任を持ちます。</p></div>
+    <div class="reason rv" style="transition-delay:.07s"><span class="icbox"><svg class="ic"><use href="#i-shieldcheck"/></svg></span><h4>セキュア・本番品質</h4><p>規制の厳しい分野で本番AIのクラウド基盤・セキュリティ設計に従事。「動けばいい」ではなく、安心して使える品質で。</p></div>
+    <div class="reason rv" style="transition-delay:.14s"><span class="icbox"><svg class="ic"><use href="#i-trend"/></svg></span><h4>数字で、正直に</h4><p>"なんとなくAI" ではなく、コスト・時間・取りこぼしの数字で話します。効果が見込めないことは「やらない」と言います。</p></div>
   </div>
 </div></section>
 
@@ -339,7 +383,7 @@
   <p class="sec-lead">創業まもない一人の事業者です。だからこそ、会社の看板ではなく「自分が作って動かしているもの」と「これまでの仕事」で信頼していただきたい。</p></div>
   <div class="profile">
     <div class="pcard rv">
-      <svg class="mk" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#16181d"/><path d="M16 4.5L18.4 13.6L27.5 16L18.4 18.4L16 27.5L13.6 18.4L4.5 16L13.6 13.6Z" fill="#c8f24a"/></svg>
+      <svg class="mk" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#16181d"/><use href="#i-spark" fill="#c8f24a"/></svg>
       <div class="nm">井原 優太</div>
       <div class="ro">信州AIワークス 代表<br>AI業務自動化の専門家／社外のIT担当</div>
       <div class="loc">長野県を拠点に、長野市から車で1時間圏の中小企業を中心に対応（オンラインは全国可）。</div>
@@ -349,10 +393,10 @@
       </div>
     </div>
     <div class="proof-body rv">
-      <div class="item"><h4>宿泊管理SaaS「yadocho」を1人で本番運営</h4><p>企画・設計から、決済（Stripe）・障害対策（DR）・宿泊税の法令対応まで、ひとりで作り、実際に稼働させています。「企画から実装・運用・コンプラまで通せる」ことの、何よりの証拠です。 → <a href="https://yadocho.com/" target="_blank" rel="noopener">yadocho.com</a></p></div>
-      <div class="item"><h4>規制分野で、本番AIのセキュリティ設計に従事</h4><p>本業で、規制の厳しい分野における本番AIのクラウド基盤・セキュリティ設計に携わっています。顧客情報を扱うAI導入で求められる「安全に運用する」設計が、本職です。（業界・案件名は守秘のため非開示）</p></div>
-      <div class="item"><h4>技術を、外に向けて発信しています</h4><p>考えていること・作っているものをZennで発信。第三者が検証できる形で、専門性を積み上げています。 → <a href="https://zenn.dev/yuhtaihara" target="_blank" rel="noopener">zenn.dev/yuhtaihara</a></p></div>
-      <div class="item"><h4>長野の地に、根を張って</h4><p>大都市のベンダーではなく、長野の事業者として地元に伴走します。対面で顔を合わせ、長く付き合える「社外のIT担当」を目指しています。</p></div>
+      <div class="item"><span class="icpill"><svg class="ic"><use href="#i-gear"/></svg></span><div><h4>宿泊管理SaaS「yadocho」を1人で本番運営</h4><p>企画・設計から、決済（Stripe）・障害対策（DR）・宿泊税の法令対応まで、ひとりで作り、実際に稼働させています。「企画から実装・運用・コンプラまで通せる」ことの、何よりの証拠です。 → <a href="https://yadocho.com/" target="_blank" rel="noopener">yadocho.com</a></p></div></div>
+      <div class="item"><span class="icpill"><svg class="ic"><use href="#i-shieldcheck"/></svg></span><div><h4>規制分野で、本番AIのセキュリティ設計に従事</h4><p>本業で、規制の厳しい分野における本番AIのクラウド基盤・セキュリティ設計に携わっています。顧客情報を扱うAI導入で求められる「安全に運用する」設計が、本職です。（業界・案件名は守秘のため非開示）</p></div></div>
+      <div class="item"><span class="icpill"><svg class="ic"><use href="#i-chat"/></svg></span><div><h4>技術を、外に向けて発信しています</h4><p>考えていること・作っているものをZennで発信。第三者が検証できる形で、専門性を積み上げています。 → <a href="https://zenn.dev/yuhtaihara" target="_blank" rel="noopener">zenn.dev/yuhtaihara</a></p></div></div>
+      <div class="item"><span class="icpill"><svg class="ic"><use href="#i-handshake"/></svg></span><div><h4>長野の地に、根を張って</h4><p>大都市のベンダーではなく、長野の事業者として地元に伴走します。対面で顔を合わせ、長く付き合える「社外のIT担当」を目指しています。</p></div></div>
     </div>
   </div>
 </div></section>
@@ -369,8 +413,21 @@
   </div>
   <p class="pricing-note rv">※ 具体的な金額は、御社の課題と補助金の適用可否によって変わります。診断のうえで個別にお出しし、納得いただいてから着手します。先に大きな費用が発生することはありません。</p>
   <div class="subsidy rv">
+    <span class="icbox"><svg class="ic"><use href="#i-shield"/></svg></span>
     <div class="big">導入費は、<span class="hl">補助金が使える前提</span>で設計します。</div>
     <p>国のIT導入補助金など、AI・IT導入を後押しする公的制度を活用すれば、実質負担を抑えられる可能性があります（補助率は最大1/2が目安）。対象になるか・どう申請するかも含め、一緒に確認しながら進めます。</p>
+  </div>
+</div></section>
+
+<!-- 4つの安心 -->
+<section id="assure"><div class="wrap">
+  <div class="rv"><span class="eyebrow">Low risk</span>
+  <h2 class="sec-title">だから、リスクなく始められます。</h2></div>
+  <div class="assure">
+    <div class="acard rv"><span class="icbox"><svg class="ic"><use href="#i-chat"/></svg></span><div><h4>まずは無料相談</h4><p>お金をかけずに「AIで何ができそうか」の方向性が分かります。話すだけでもOK。オンライン可。</p></div></div>
+    <div class="acard rv" style="transition-delay:.05s"><span class="icbox"><svg class="ic"><use href="#i-gear"/></svg></span><div><h4>小さく試せる</h4><p>いきなり大きな投資はしません。一番もったいない手間ひとつから。効果を確かめてから広げます。</p></div></div>
+    <div class="acard rv" style="transition-delay:.1s"><span class="icbox"><svg class="ic"><use href="#i-check"/></svg></span><div><h4>効果が無ければ「やらない」</h4><p>無理に売りません。数字で見て割に合わないなら、はっきりそうお伝えします。</p></div></div>
+    <div class="acard rv" style="transition-delay:.15s"><span class="icbox"><svg class="ic"><use href="#i-shield"/></svg></span><div><h4>補助金で実負担を圧縮</h4><p>使える公的制度がないか一緒に確認。導入費の実質負担を抑えながら進められます。</p></div></div>
   </div>
 </div></section>
 
