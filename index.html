@@ -3,85 +3,264 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>信州AIワークス｜中小企業のAI活用を、実装から現場の使い方まで</title>
+<title>信州AIワークス｜AIを、現場の力に。</title>
 <meta name="description" content="長野の中小企業のAI活用パートナー。業務自動化の本番実装から、SNS・コンテンツのAI活用支援まで。信州AIワークス（井原優太）。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%23070b0f'/%3E%3Cpath%20d='M16%204.5L18.4%2013.6L27.5%2016L18.4%2018.4L16%2027.5L13.6%2018.4L4.5%2016L13.6%2013.6Z'%20fill='%235ff0cf'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1a2230; --sub:#566074; --line:#e6e3dc; --bg:#faf8f4;
-    --card:#ffffff; --accent:#1f5f6b; --accent-ink:#0f3a43;
-    --maxw:760px;
+    --bg:#070b0f; --bg2:#0b1117; --ink:#eef4f3; --sub:#94a6a8;
+    --line:rgba(120,160,160,.14);
+    --mint:#5ff0cf; --mint-dim:#36b9a0; --sky:#7fb8ff; --amber:#ffce6b;
+    --glass:rgba(255,255,255,.025);
+    --maxw:1040px;
+    --disp:"Bricolage Grotesque",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --jp:"Zen Kaku Gothic New",system-ui,sans-serif;
   }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
   body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,sans-serif;
-    line-height:1.85; font-size:16px; letter-spacing:.01em;
+    background:var(--bg); color:var(--ink); font-family:var(--jp);
+    line-height:1.9; font-size:16px; letter-spacing:.01em; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
-  a{color:var(--accent-ink)}
-  header{padding:60px 0 34px; border-bottom:1px solid var(--line)}
-  .brand{font-size:14px; letter-spacing:.18em; color:var(--accent); font-weight:700; margin:0 0 18px}
-  h1{font-size:clamp(24px,5.2vw,34px); line-height:1.5; margin:0 0 18px; font-weight:800}
-  .lead{color:var(--sub); font-size:16px; margin:0; max-width:62ch}
-  section{padding:40px 0; border-bottom:1px solid var(--line)}
-  h2{font-size:13px; letter-spacing:.16em; color:var(--accent); font-weight:700; margin:0 0 6px; text-transform:none}
-  .lane-title{font-size:20px; font-weight:800; margin:0 0 14px; line-height:1.5}
-  ul{margin:0; padding-left:1.1em} li{margin:.4em 0}
-  .muted{color:var(--sub)}
-  .proof{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin-top:18px}
-  .proof p{margin:.5em 0}
-  .cta{padding:48px 0}
-  .cta-box{background:var(--accent); color:#fff; border-radius:16px; padding:30px 26px; text-align:center}
-  .cta-box h2{color:#bfe3ea}
-  .cta-box p{margin:.4em 0 20px; font-size:17px}
-  .btn{display:inline-block; background:#fff; color:var(--accent-ink); text-decoration:none;
-       font-weight:800; padding:13px 26px; border-radius:999px; font-size:16px}
-  footer{padding:34px 0 70px; color:var(--sub); font-size:13px; line-height:1.9}
-  footer strong{color:var(--ink)}
+
+  /* ---------- atmosphere ---------- */
+  .bg{position:fixed; inset:0; z-index:-3; background:
+      radial-gradient(120% 80% at 50% -10%, #0d1820 0%, var(--bg) 55%);}
+  .aurora{position:fixed; inset:-20%; z-index:-2; filter:blur(70px); opacity:.5; pointer-events:none}
+  .aurora span{position:absolute; border-radius:50%; mix-blend-mode:screen}
+  .aurora .a1{width:48vw; height:48vw; left:-6vw; top:-4vw;
+      background:radial-gradient(circle, rgba(95,240,207,.5), transparent 62%); animation:drift1 22s ease-in-out infinite}
+  .aurora .a2{width:42vw; height:42vw; right:-8vw; top:8vw;
+      background:radial-gradient(circle, rgba(127,184,255,.42), transparent 62%); animation:drift2 27s ease-in-out infinite}
+  .aurora .a3{width:38vw; height:38vw; left:30vw; bottom:-14vw;
+      background:radial-gradient(circle, rgba(54,185,160,.34), transparent 64%); animation:drift1 31s ease-in-out infinite reverse}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(5vw,4vw) scale(1.12)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5vw,3vw) scale(1.08)}}
+  .grid{position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(120% 100% at 50% 0%, #000 30%, transparent 75%);
+            mask-image:radial-gradient(120% 100% at 50% 0%, #000 30%, transparent 75%);}
+  .grain{position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.045; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .spot{position:fixed; width:560px; height:560px; z-index:-1; border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle, rgba(95,240,207,.10), transparent 60%);
+    transform:translate(-50%,-50%); transition:opacity .4s; opacity:0}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.28em; color:var(--mint);
+    text-transform:uppercase; display:inline-flex; align-items:center; gap:10px}
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--mint-dim)}
+
+  /* nav */
+  nav{position:sticky; top:0; z-index:10; backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line); background:rgba(7,11,15,.55)}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:66px}
+  .logo{display:flex; align-items:center; gap:11px; font-family:var(--disp); font-weight:800; letter-spacing:.01em; font-size:17px}
+  .logo .mark{width:24px; height:24px; flex:0 0 24px}
+  .logo small{font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--sub); font-weight:400}
+  .nav-cta{font-family:var(--mono); font-size:12px; letter-spacing:.12em; color:var(--ink);
+    text-decoration:none; border:1px solid var(--line); padding:9px 16px; border-radius:999px; transition:.25s; white-space:nowrap}
+  .nav-cta:hover{border-color:var(--mint); color:var(--mint); box-shadow:0 0 24px rgba(95,240,207,.18)}
+
+  /* hero */
+  header{position:relative; padding:clamp(72px,13vh,150px) 0 clamp(60px,9vh,110px)}
+  .h-tag{margin-bottom:30px}
+  h1{font-family:var(--jp); font-weight:700; letter-spacing:.005em;
+    font-size:clamp(31px,5.4vw,62px); line-height:1.22}
+  h1 .grad{background:linear-gradient(100deg,var(--mint),var(--sky) 70%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+  .lead{margin-top:30px; color:var(--sub); font-size:clamp(15px,1.7vw,18px); line-height:1.95; max-width:54ch}
+  .hero-meta{margin-top:46px; display:flex; flex-wrap:wrap; gap:14px 34px; font-family:var(--mono);
+    font-size:12px; letter-spacing:.06em; color:var(--sub)}
+  .hero-meta b{color:var(--ink); font-weight:500}
+
+  /* reveal */
+  .rv{opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1; transform:none}
+
+  /* sections */
+  section{padding:clamp(56px,9vh,104px) 0; position:relative}
+  .sec-head{margin-bottom:48px}
+  .sec-head h2{font-family:var(--disp); font-weight:800; font-size:clamp(13px,1.5vw,15px);
+    letter-spacing:.04em; color:var(--sub); margin-top:14px}
+
+  /* service cards */
+  .cards{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+  .card{position:relative; border:1px solid var(--line); border-radius:20px; padding:38px 34px 40px;
+    background:linear-gradient(160deg, var(--glass), rgba(255,255,255,0)); overflow:hidden; transition:.4s}
+  .card::before{content:""; position:absolute; inset:0; border-radius:20px; padding:1px;
+    background:linear-gradient(150deg, rgba(95,240,207,.4), transparent 40%); opacity:0; transition:.4s;
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude}
+  .card:hover{transform:translateY(-4px); border-color:rgba(95,240,207,.25)}
+  .card:hover::before{opacity:1}
+  .card .num{font-family:var(--mono); font-size:12px; letter-spacing:.2em; color:var(--mint)}
+  .card h3{font-family:var(--jp); font-weight:700; font-size:clamp(21px,2.6vw,27px); margin:18px 0 16px; line-height:1.45}
+  .card p{color:var(--sub); font-size:15px; line-height:1.92}
+  .tags{margin-top:22px; display:flex; flex-wrap:wrap; gap:8px}
+  .tag{font-family:var(--mono); font-size:11px; letter-spacing:.05em; color:var(--ink);
+    border:1px solid var(--line); padding:6px 11px; border-radius:8px; background:rgba(255,255,255,.02)}
+
+  /* proof */
+  .proof{border:1px solid var(--line); border-radius:20px; padding:40px 38px;
+    background:linear-gradient(160deg, var(--glass), transparent)}
+  .proof h3{font-family:var(--disp); font-weight:800; font-size:18px; margin-bottom:24px; letter-spacing:.01em}
+  .proof ul{list-style:none; display:grid; gap:18px}
+  .proof li{display:flex; gap:16px; align-items:flex-start; font-size:15.5px; line-height:1.8}
+  .proof li .dot{flex:0 0 7px; width:7px; height:7px; border-radius:50%; margin-top:11px;
+    background:var(--mint); box-shadow:0 0 12px var(--mint)}
+  .proof a{color:var(--mint); text-decoration:none; border-bottom:1px solid rgba(95,240,207,.3); transition:.2s}
+  .proof a:hover{border-color:var(--mint); text-shadow:0 0 16px rgba(95,240,207,.4)}
+
+  /* cta */
+  .cta{text-align:center; padding:clamp(70px,12vh,130px) 0}
+  .cta h2{font-family:var(--jp); font-weight:700; font-size:clamp(26px,4.4vw,46px); line-height:1.4; margin-bottom:18px}
+  .cta p{color:var(--sub); margin-bottom:40px; font-size:16px}
+  .btn{display:inline-flex; align-items:center; gap:12px; font-family:var(--disp); font-weight:600; font-size:17px;
+    color:var(--bg); background:linear-gradient(100deg,var(--mint),#8ff0d8); text-decoration:none;
+    padding:17px 34px; border-radius:999px; transition:.3s; box-shadow:0 8px 40px rgba(95,240,207,.25)}
+  .btn:hover{transform:translateY(-3px); box-shadow:0 14px 56px rgba(95,240,207,.45)}
+  .btn .arr{transition:.3s} .btn:hover .arr{transform:translate(5px)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line); padding:50px 0 70px; color:var(--sub); font-size:13px; line-height:2}
+  footer .frow{display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px}
+  footer b{color:var(--ink); font-weight:500}
+  footer a{color:var(--mint); text-decoration:none}
+  .pp{margin-top:26px; padding-top:24px; border-top:1px solid var(--line); max-width:70ch; font-size:12.5px; color:#73838a}
+
+  @media(max-width:720px){
+    .cards{grid-template-columns:1fr}
+    .hero-meta{gap:10px 22px}
+    nav .nav-cta{display:none}
+    .card{padding:32px 26px 34px}
+    .proof{padding:32px 26px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .aurora{animation:none} .aurora span{animation:none!important}
+    .rv{transition:none; opacity:1; transform:none}
+    html{scroll-behavior:auto}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="bg"></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grid"></div>
+<div class="grain"></div>
+<div class="spot" id="spot"></div>
 
-  <header>
-    <p class="brand">信州AIワークス</p>
-    <h1>長野の企業の、AI活用パートナー。<br>実装から、現場の使い方まで。</h1>
-    <p class="lead">「AI・デジタル化に興味はあるが、何から手をつけるか分からない／社内に詳しい人がいない／投資対効果が読めない」。そんな長野の中小企業に、AIの専門家が伴走します。業務の自動化・本番実装から、現場でのAIの使い方まで——必要なところを、必要なだけ。</p>
-  </header>
-
-  <section>
-    <h2>SERVICE 01</h2>
-    <p class="lane-title">AIで、業務の手間を減らす</p>
-    <p class="muted">業務の困りごとを聞いて、AIで減らせる手間・自動化できる仕事を、相談・診断からセキュアな本番品質の実装まで一気通貫で。電話一次対応AI／問い合わせ・見積もり対応／書類・記録の自動化／社内ナレッジ検索 など。導入費は補助金が使える前提で設計します（適用可否は一緒に確認）。</p>
-    <div class="proof">
-      <p><strong>なぜ任せられるか</strong></p>
-      <p>・宿泊管理SaaS「<a href="https://yadocho.com/" target="_blank" rel="noopener">yadocho</a>」を1人で、設計〜決済〜宿泊税の法令対応まで本番運営（<a href="https://app.yadocho.com/" target="_blank" rel="noopener">アプリ</a>）</p>
-      <p>・規制の厳しい分野で、本番AIのクラウド基盤・セキュリティ設計に従事</p>
-      <p>・技術発信: <a href="https://zenn.dev/yuhtaihara" target="_blank" rel="noopener">Zenn</a></p>
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <svg class="mark" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#0b1117"/><path d="M16 4.5L18.4 13.6L27.5 16L18.4 18.4L16 27.5L13.6 18.4L4.5 16L13.6 13.6Z" fill="#5ff0cf"/></svg>
+      信州AIワークス <small>SHINSHU&nbsp;AI&nbsp;WORKS</small>
     </div>
-  </section>
+    <a class="nav-cta" href="mailto:shinshuaiworks@gmail.com">相談する →</a>
+  </div>
+</nav>
 
-  <section>
-    <h2>SERVICE 02</h2>
-    <p class="lane-title">AIを、現場で使えるようにする</p>
-    <p class="muted">SNS・動画・コンテンツ制作で「AIをどう使うか」を、現場目線でレクチャー・伴走します。「ツールはあるが使いこなせない」SNS・マーケ担当が、自分で回せるようになるまで。インバウンド向けの多言語PR・コンテンツ活用も。AIを活用したコンテンツ制作・運用の実務知見にもとづいて支援します。</p>
-  </section>
-
-  <div class="cta wrap">
-    <div class="cta-box">
-      <h2>CONTACT</h2>
-      <p>御社の "一番もったいない手間" や "AIで伸ばせる発信" を、<br>一度、聞かせてください。</p>
-      <a class="btn" href="mailto:shinshuaiworks@gmail.com">メールで相談する</a>
+<header>
+  <div class="wrap">
+    <div class="h-tag rv"><span class="eyebrow">Nagano · AI Automation &amp; Enablement</span></div>
+    <h1 class="rv" style="transition-delay:.08s">AIを、<span class="grad">現場の力</span>に。<br>長野から、実装まで。</h1>
+    <p class="lead rv" style="transition-delay:.18s">「AIに興味はあるが、何から手をつけるか分からない」「社内に詳しい人がいない」「投資対効果が読めない」。そんな長野の中小企業に、AIの専門家が伴走します。業務の自動化・本番実装から、現場でのAIの使い方まで——必要なところを、必要なだけ。</p>
+    <div class="hero-meta rv" style="transition-delay:.28s">
+      <span>▸ <b>本番実装</b> までやる</span>
+      <span>▸ <b>セキュア</b>・規制対応の品質</span>
+      <span>▸ <b>補助金</b>活用で導入コストを圧縮</span>
     </div>
   </div>
+</header>
 
-  <footer>
-    <p><strong>信州AIワークス</strong>　責任者: 井原優太<br>
-    お問い合わせ: <a href="mailto:shinshuaiworks@gmail.com">shinshuaiworks@gmail.com</a></p>
-    <p>プライバシーポリシー: 当サイトは問い合わせフォームを設置せず、個人情報を収集しません。メールでお問い合わせいただいた場合、内容は返信の目的にのみ使用します。</p>
-  </footer>
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">What we do</span>
+      <h2>2つの入口で、AI活用をまるごと。</h2>
+    </div>
+    <div class="cards">
+      <div class="card rv">
+        <div class="num">01 / AUTOMATION</div>
+        <h3>AIで、業務の手間を減らす</h3>
+        <p>業務の困りごとを聞いて、AIで減らせる手間・自動化できる仕事を、相談・診断からセキュアな本番品質の実装まで一気通貫で。導入費は補助金が使える前提で設計します（適用可否は一緒に確認）。</p>
+        <div class="tags">
+          <span class="tag">電話一次対応AI</span><span class="tag">問い合わせ・見積もり</span>
+          <span class="tag">書類・記録の自動化</span><span class="tag">社内ナレッジ検索</span>
+        </div>
+      </div>
+      <div class="card rv" style="transition-delay:.1s">
+        <div class="num">02 / ENABLEMENT</div>
+        <h3>AIを、現場で使えるようにする</h3>
+        <p>SNS・動画・コンテンツ制作で「AIをどう使うか」を、現場目線でレクチャー・伴走。「ツールはあるが使いこなせない」担当者が、自分で回せるようになるまで。インバウンド向けの多言語PR・コンテンツ活用も。</p>
+        <div class="tags">
+          <span class="tag">AI活用レクチャー</span><span class="tag">SNS・動画運用</span>
+          <span class="tag">多言語PR</span><span class="tag">制作の内製化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Why us</span>
+      <h2>「助言だけ」では終わらない。動くものを、本番で。</h2>
+    </div>
+    <div class="proof rv">
+      <h3>実績と裏付け</h3>
+      <ul>
+        <li><span class="dot"></span><div>宿泊管理SaaS「<a href="https://yadocho.com/" target="_blank" rel="noopener">yadocho</a>」を1人で、設計〜決済〜宿泊税の法令対応まで<b style="color:var(--ink);font-weight:500"> 本番運営</b>（<a href="https://app.yadocho.com/" target="_blank" rel="noopener">アプリを見る</a>）</div></li>
+        <li><span class="dot"></span><div>規制の厳しい分野で、本番AIのクラウド基盤・セキュリティ設計に従事</div></li>
+        <li><span class="dot"></span><div>技術発信は <a href="https://zenn.dev/yuhtaihara" target="_blank" rel="noopener">Zenn</a> にて</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta wrap">
+  <div class="rv">
+    <h2>御社の "一番もったいない手間" を、<br>一度、聞かせてください。</h2>
+    <p>AIで減らせるか・いくら補助金が出るか、その場で一緒に見ます。</p>
+    <a class="btn" href="mailto:shinshuaiworks@gmail.com">メールで相談する <span class="arr">→</span></a>
+  </div>
 </div>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <div><b>信州AIワークス</b>　責任者: 井原優太<br>長野の中小企業のAI活用パートナー</div>
+      <div>お問い合わせ<br><a href="mailto:shinshuaiworks@gmail.com">shinshuaiworks@gmail.com</a></div>
+    </div>
+    <div class="pp">プライバシーポリシー: 当サイトは問い合わせフォームを設置せず、個人情報を収集しません。メールでお問い合わせいただいた場合、内容は返信の目的にのみ使用します。</div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // hero spotlight follows cursor (desktop only)
+  const spot=document.getElementById('spot'); const hero=document.querySelector('header');
+  if(window.matchMedia('(pointer:fine)').matches){
+    window.addEventListener('mousemove',(e)=>{
+      const r=hero.getBoundingClientRect();
+      const inHero = e.clientY < r.bottom;
+      spot.style.opacity = inHero ? '1':'0';
+      spot.style.left=e.clientX+'px'; spot.style.top=e.clientY+'px';
+    });
+  }
+</script>
 </body>
 </html>
